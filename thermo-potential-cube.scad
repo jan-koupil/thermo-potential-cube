@@ -11,34 +11,39 @@ font = "Liberation Sans:style=bold";
 fontSizeAbs = fontSize * size / 100;
 lineWidthAbs = lineWidth * size / 100;
 
+difference() {
+    cube(size, center = true);
 
-translate([0, 0, size / 2])
-    wall("N", "G", "H", "F", "U", "out");
-
-rotate([-90, 0, 0])
     translate([0, 0, size / 2])
-        wall("P", "Ø", "χ", "G", "H", "out");
+        wall("N", "G", "H", "F", "U", "out");
 
-rotate([90, 0, 0])
-    translate([0, 0, size / 2])
-        wall("V", "F", "U", "Ω", "Ψ", "in");
+    rotate([-90, 0, 0])
+        translate([0, 0, size / 2])
+            wall("P", "Ø", "χ", "G", "H", "out");
 
-rotate([0, -90, 0])
-    translate([0, 0, size / 2])
-        wall("T", "Ø", "G", "Ω", "F", "in");   
+    rotate([90, 0, 0])
+        translate([0, 0, size / 2])
+            wall("V", "F", "U", "Ω", "Ψ", "in");
 
-rotate([0, 90, 0])
-    translate([0, 0, size / 2])
-        wall("S", "H", "χ", "U", "Ψ", "out");   
+    rotate([0, -90, 0])
+        translate([0, 0, size / 2])
+            wall("T", "Ø", "G", "Ω", "F", "in");   
 
-rotate([0, 180, 0])
-    translate([0, 0, size / 2])
-        wall("μ", "χ", "Ø", "Ψ", "Ω", "out");           
+    rotate([0, 90, 0])
+        translate([0, 0, size / 2])
+            wall("S", "H", "χ", "U", "Ψ", "out");   
+
+    rotate([0, 180, 0])
+        translate([0, 0, size / 2])
+            wall("μ", "χ", "Ø", "Ψ", "Ω", "in");    
+
+}               
 
 module wall (center, topLeft, topRight, bottomLeft, bottomRight, inOut) {
     translate ([0, 0, -inset / 2])
-    difference(){
-        cube(size = [size, size, inset], center = true);
+//    difference(){
+    union(){
+        //cube(size = [size, size, inset], center = true);
 
         translate([1.1 * fontSizeAbs / 2, 0, -inset / 2 - epsilon])
             linear_extrude(inset + 2 * epsilon)
