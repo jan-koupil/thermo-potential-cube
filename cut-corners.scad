@@ -1,12 +1,14 @@
-$fn = 100;
+$fn = 50;
+use <ttf/cmunsx.ttf>
 
-size = 80;
+size = 60;
+
 cut = 20; //cut part, in percent of diagonal
 fontSize = 13; //font size in percent of size
 inset = 2;
 epsilon = 0.05;
-lineWidth = 1.5; //central symbol in percent of size
-font = "Liberation Sans:style=bold";
+lineWidth = 2.3; //central symbol in percent of size
+font = "CMU Sans Serif:style=bold";
 // font = "Calibri:style=bold";
 
 
@@ -27,34 +29,34 @@ difference() {
     rotate([0,theta,phi])
         corner("χ");
 
-    rotate([0,theta,-phi])
+    rotate([270,theta,-phi])
         corner("Ψ");
 
     rotate([0,-theta,phi])
         corner("H");
 
-    rotate([0,-theta,-phi])
+    rotate([90,-theta,-phi])
         corner("U");
 
     rotate([0,theta + 180,phi])
         corner("F");
 
-    rotate([0,theta + 180,-phi])
+    rotate([90,theta + 180,-phi])
         corner("G");
 
     rotate([0,-(theta + 180),phi])
         corner("Ω");
 
-    rotate([0,-(theta + 180),-phi])
+    rotate([270,-(theta + 180),-phi])
         corner("Ø");
 
 
     translate([0, 0, size / 2])
-        wall("N", "out");
+        wall("N", "out", 135);
 
     rotate([-90, 0, 0])
         translate([0, 0, size / 2])
-            wall("P", "out");
+            wall("P", "out", 180);
 
     rotate([90, 0, 0])
         translate([0, 0, size / 2])
@@ -62,15 +64,15 @@ difference() {
 
     rotate([0, -90, 0])
         translate([0, 0, size / 2])
-            wall("T", "in");   
+            wall("T", "in", 270);   
 
     rotate([0, 90, 0])
         translate([0, 0, size / 2])
-            wall("S", "out");   
+            wall("S", "out", 90);   
 
     rotate([0, 180, 0])
         translate([0, 0, size / 2])
-            wall("μ", "in");    
+            wall("μ", "in", 45);    
 
 }
 
